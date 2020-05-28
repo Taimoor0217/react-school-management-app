@@ -1,7 +1,6 @@
 import React from 'react';
-import './App.css';
 import Routing from './components/Routing'
-
+import './styles/global.css'
 function App() {
   return (
     <div className="App">
