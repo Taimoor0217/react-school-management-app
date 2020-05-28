@@ -1,14 +1,8 @@
-import React  from 'react';
+import React , {useState , useEffect } from 'react';
 export default function(){
     return (
         <>
         <div>
-        <div className="header">
-            <div className="bounds">
-            <h1 className="header--logo">Courses</h1>
-            <nav><a className="signup" href="sign-up.html">Sign Up</a><a className="signin" href="sign-in.html">Sign In</a></nav>
-            </div>
-        </div>
         <hr />
         <div className="bounds">
             <div className="grid-33"><a className="course--module course--link" href="course-detail.html">

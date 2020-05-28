@@ -15,11 +15,13 @@ const UserSignUp = lazy(() => import('./UserSignUp'));
 const NotFound = lazy(() => import('./NotFound'));
 const Forbidden = lazy(() => import('./Forbidden'));
 const Error = lazy(() => import('./Error'));
+const Header = lazy(() => import('./Header'));
 
 export default function Routing() {
   return (
     <Router>
       <Suspense fallback={<div>Loading ..</div>}>
+        <Header />
         <Switch>
           <Route exact path="/courses/:id/update">
             <UpdateCourse />
@@ -49,7 +51,7 @@ export default function Routing() {
             <Courses />
           </Route>
           <Route exact path="/*">
-            <Courses />
+            <NotFound />
           </Route>
         </Switch>
       </Suspense>
