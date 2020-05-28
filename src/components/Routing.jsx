@@ -12,6 +12,9 @@ const Courses = lazy(() => import('./Courses'));
 const UserSignIn = lazy(() => import('./UserSignIn'));
 const UserSignout = lazy(() => import('./UserSignout'));
 const UserSignUp = lazy(() => import('./UserSignUp'));
+const NotFound = lazy(() => import('./NotFound'));
+const Forbidden = lazy(() => import('./Forbidden'));
+const Error = lazy(() => import('./Error'));
 
 export default function Routing() {
   return (
@@ -36,7 +39,16 @@ export default function Routing() {
           <Route exact path="/signout">
             <UserSignout />
           </Route>
+          <Route exact path="/error">
+              <Error />
+          </Route>
+          <Route exact path="/forbidden">
+              <Forbidden />
+          </Route>
           <Route exact path="/">
+            <Courses />
+          </Route>
+          <Route exact path="/*">
             <Courses />
           </Route>
         </Switch>
