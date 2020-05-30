@@ -5,6 +5,7 @@ import {
   Route
 } from "react-router-dom";
 import {UserContext} from "./UserContext"; 
+import Auth from "../helpers/Auth";
 const UpdateCourse = lazy(() => import('./UpdateCourse'));
 const CreateCourse = lazy(() => import('./CreateCourse'));
 const CourseDetail = lazy(() => import('./CourseDetail'));
@@ -16,11 +17,16 @@ const NotFound = lazy(() => import('./NotFound'));
 const Forbidden = lazy(() => import('./Forbidden'));
 const Error = lazy(() => import('./Error'));
 const Header = lazy(() => import('./Header'));
-
 export default function Routing() {
 
   const [user , setUser] = useState(null);
-  const appContext = useMemo(()=>({user , setUser}) , [user, setUser])
+  const appContext = useMemo(()=>({
+    user , 
+    setUser , 
+    Login: Auth.Login,
+    Url: "http://localhost:5000/api"
+
+  }) , [user, setUser])
   return (
     <Router>
       <Suspense fallback={<div>Loading ..</div>}>
