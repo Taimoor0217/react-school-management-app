@@ -1,4 +1,4 @@
-import React, { useState , useMemo, Suspense, lazy } from 'react';
+import React, { useState , useMemo, Suspense, lazy } from "react";
 import {
   BrowserRouter as Router,
   Switch,
@@ -6,17 +6,18 @@ import {
 } from "react-router-dom";
 import {UserContext} from "./UserContext"; 
 import Auth from "../helpers/Auth";
-const UpdateCourse = lazy(() => import('./UpdateCourse'));
-const CreateCourse = lazy(() => import('./CreateCourse'));
-const CourseDetail = lazy(() => import('./CourseDetail'));
-const Courses = lazy(() => import('./Courses'));
-const UserSignIn = lazy(() => import('./UserSignIn'));
-const UserSignout = lazy(() => import('./UserSignout'));
-const UserSignUp = lazy(() => import('./UserSignUp'));
-const NotFound = lazy(() => import('./NotFound'));
-const Forbidden = lazy(() => import('./Forbidden'));
-const Error = lazy(() => import('./Error'));
-const Header = lazy(() => import('./Header'));
+const UpdateCourse = lazy(() => import("./UpdateCourse"));
+const CreateCourse = lazy(() => import("./CreateCourse"));
+const CourseDetail = lazy(() => import("./CourseDetail"));
+const Courses = lazy(() => import("./Courses"));
+const UserSignIn = lazy(() => import("./UserSignIn"));
+const UserSignout = lazy(() => import("./UserSignout"));
+const UserSignUp = lazy(() => import("./UserSignUp"));
+const NotFound = lazy(() => import("./NotFound"));
+const Forbidden = lazy(() => import("./Forbidden"));
+const Error = lazy(() => import("./Error"));
+const Header = lazy(() => import("./Header"));
+const ProtectedRoute = lazy(() => import("./ProtectedRoute"));
 export default function Routing() {
 
   const [user , setUser] = useState(null);
@@ -37,10 +38,10 @@ export default function Routing() {
               <UpdateCourse />
             </Route>
             <Route exact path="/courses/create">
-              <CreateCourse />
+              <ProtectedRoute Component = {CreateCourse} />
             </Route>
             <Route exact path="/courses/:id">
-              <CourseDetail />
+              <ProtectedRoute Component = {CourseDetail} />
             </Route>
             <Route exact path="/signin">
               <UserSignIn />

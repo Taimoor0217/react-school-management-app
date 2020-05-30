@@ -1,22 +1,20 @@
 import React , {useState , useEffect , useContext } from "react";
 import { useHistory } from "react-router-dom";
-import {UserContext} from "./UserContext";
-import Api from "../helpers/Api.jsx";
+import Api from "../helpers/Api";
 export default function(){
     let history = useHistory();
     const [Courses, UpdateCourses] = useState([]);
-    const appContext = useContext(UserContext);
     useEffect(()=>{
+        //abort isgnal
         Api
         .getCourses()
         .then(res =>{
-            // console.log(res)
+            console.log(res)
             UpdateCourses(res)
         })
         .catch(err=>{
             console.log(err)
         })
-        console.log(appContext.user)
     } , [])
     return (
         <div>

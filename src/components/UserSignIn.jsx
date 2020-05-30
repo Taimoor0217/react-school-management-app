@@ -1,6 +1,5 @@
 import React, {useState, useContext}  from 'react';
 import {UserContext} from "./UserContext";
-import Auth from "../helpers/Auth";
 import {useHistory} from "react-router-dom";
 export default function(){
     const [ emailAddress , setEmail ] = useState("")
@@ -13,7 +12,10 @@ export default function(){
         appContext
         .Login({emailAddress , password} , appContext.Url)
         .then(res=>{
-            appContext.setUser(res.data)
+            appContext.setUser({
+                ...res.data,
+                password
+            })
             history.push('/')
         })
         .catch(err=>{
