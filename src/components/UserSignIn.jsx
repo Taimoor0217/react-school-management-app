@@ -12,6 +12,7 @@ export default function(){
         appContext
         .Login({emailAddress , password} , appContext.Url)
         .then(res=>{
+            console.log(res.data)
             appContext.setUser({
                 ...res.data,
                 password
